@@ -9,10 +9,17 @@ const button = document.querySelector('.js-button');
 const searchBar = document.querySelector('.js-input');
 const resultsUl = document.querySelector('.js-results-ul');
 const favUl = document.querySelector('.js-fav-ul');
-
+const header = document.querySelector('.header');
+const main = document.querySelector('.main')
 // 1. Pedir información a la API tras realizar una búsqueda
-button.addEventListener('click', requestData);
-searchBar.addEventListener('keyup', requestData);
+button.addEventListener('click', removeWelcomeScreen)
+searchBar.addEventListener('keyup', removeWelcomeScreen)
+
+function removeWelcomeScreen(){
+    header.classList.remove('header-start')
+    main.classList.remove('hidden')
+    requestData()
+}
 
 function requestData(){
     const input = document.querySelector('.js-input').value;
@@ -51,11 +58,11 @@ function renderShows(){
     }
     resultsUl.innerHTML = codeHTML;
 
-    // Comprobar si hay algún resultado marcado como favorito previamente
+    // Comprobar si hay algún resultado marcado previamente como favorito
     for(let j = 0; j < favorites.length; j++){
         const rememberedFav = shows.find(show => show.show.id === favorites[j].show.id)
-        if (shows.find(show => show.show.id === favorites[j].show.id) !== -1){
-             const rememberedFavPosition = shows.findIndex(show => show.show.id === favorites[j].show.id)
+        if (rememberedFav !== -1){
+            const rememberedFavPosition = shows.findIndex(show => show.show.id === favorites[j].show.id)
             const resultsLi = document.querySelectorAll('.js-results-li');
 
             setInLocalStorage()
@@ -100,7 +107,6 @@ function handleClickShow(){
     addFav(event)
     highlightFav(event)
     renderFav()
-  
     setInLocalStorage()
     getFromLocalStorage()
 }
@@ -178,8 +184,6 @@ function getFromLocalStorage(){
         favUl.innerHTML = codeHTML;
 
         renderReset()
-
-        
        
         // 6. Eliminar una serie de la lista de favoritos
         const child = document.querySelectorAll('.fa-times');
@@ -253,8 +257,8 @@ function eraseSearchContent(){
     shows = []
     renderShows()
 }
-
 eraseSearchButton.addEventListener('click', eraseSearchContent)
 
 // 0. Arrancar página
 getFromLocalStorage()
+
