@@ -60,6 +60,8 @@
     
 }
 
+
+
 /* Favorite section */
 .fav {
     width: 120px;
@@ -173,6 +175,17 @@
 
 .button:hover {
     background-color: var(--color-neutral);
+    color: rgb(186, 186, 186);
+    cursor: pointer;
+}
+
+.search{
+    transform: translate(-55px, 0);
+    background-color: transparent;
+}
+
+.search:hover {
+    background-color: transparent;
     color: rgb(186, 186, 186);
     cursor: pointer;
 }

@@ -8,9 +8,11 @@ let favorites =[];
 const button = document.querySelector('.js-button');
 const resultsUl = document.querySelector('.js-results-ul');
 const favUl = document.querySelector('.js-fav-ul');
+const searchBar = document.querySelector('.js-input');
 
 // 1. Pedir información a la API tras realizar una búsqueda
 button.addEventListener('click', requestData);
+searchBar.addEventListener('keyup', requestData);
 
 function requestData(){
     const input = document.querySelector('.js-input').value;
