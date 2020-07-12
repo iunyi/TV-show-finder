@@ -6,9 +6,9 @@ let favorites =[];
 
 // Variables
 const button = document.querySelector('.js-button');
+const searchBar = document.querySelector('.js-input');
 const resultsUl = document.querySelector('.js-results-ul');
 const favUl = document.querySelector('.js-fav-ul');
-const searchBar = document.querySelector('.js-input');
 
 // 1. Pedir información a la API tras realizar una búsqueda
 button.addEventListener('click', requestData);
@@ -155,7 +155,7 @@ function getFromLocalStorage(){
             codeHTML += `<li class="js-fav-li" id="${item.show.id}">`
             codeHTML += `<div>`
             codeHTML += `<img src="${item.show.image}" alt="${item.show.name}"title="${item.show.name}">`
-            codeHTML += `<i class="fas fa-times corner"></i>`
+            codeHTML += `<i class="fas fa-times corner delete"></i>`
             codeHTML += `</div>`
             codeHTML += `<p>${item.show.name}</p>`
             codeHTML += `</li>`
@@ -229,6 +229,15 @@ function resetFavorites(){
     setInLocalStorage()
     getFromLocalStorage()
 }
+
+// 8. Eliminar valor del input de búsqueda
+const eraseSearchButton = document.querySelector('.js-erase')
+
+function eraseSearchContent(){
+    searchBar.value = ''
+}
+
+eraseSearchButton.addEventListener('click', eraseSearchContent)
 
 // 0. Arrancar página
 getFromLocalStorage()

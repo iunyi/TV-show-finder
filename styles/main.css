@@ -60,8 +60,6 @@
     
 }
 
-
-
 /* Favorite section */
 .fav {
     width: 120px;
@@ -177,11 +175,13 @@
     background-color: var(--color-neutral);
     color: rgb(186, 186, 186);
     cursor: pointer;
+
 }
 
 .search{
-    transform: translate(-55px, 0);
+    transform: translate(5px, 0);
     background-color: transparent;
+    padding:10px;
 }
 
 .search:hover {
@@ -190,18 +190,30 @@
     cursor: pointer;
 }
 
-/* x button */
+.erase {
+    transform: translate(-100px, 0);
+    background-color: transparent; 
+    color: var(--color-dark);
+    padding:10px;
+}
+.erase:hover {
+    background-color: transparent;
+    color: rgb(186, 186, 186);
+    cursor: pointer;
+}
+
+/* Delete fav button */
 .corner {
     position: absolute;
     transform: translate(-27px, -7px);
 }
 
-.fa-times {
+.delete {
     color: var(--color-dark);
     padding: 10px;
 }
 
-.fa-times:hover {
+.delete:hover {
     color: var(--color-highlight);
     cursor: pointer;
 }
