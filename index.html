@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./styles/main.css">
     <title>Evaluación final - Módulo 2 - Junyi Ji</title>
 </head>
-<body class="main">
-    <main>
-        <h1>Buscador de series</h1>
+<body class="body">
+    <header class="header">
+        <h1>TV show finder</h1>
+        <form class="form">
+            <input type="text" class="js-input input" placeholder="Black Mirror">
+            <button type="button" class="js-button button search"><i class="fas fa-search"></i></button>
+        </form>
+    </header>
+    <main class="main">
+        <section class="results">
+            <ul class="js-results-ul results-ul"></ul>
+        </section>
+        <section class="fav">
+            <h2 class="h2">
+                <i class="fas fa-heart fa-beat"></i>
+            </h2>
+            <ul class="js-fav-ul fav-ul"></ul>
+        </section>
     </main>
     <script type="text/javascript" src="./js/main.js"></script>
 </body>
