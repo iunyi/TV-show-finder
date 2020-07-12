@@ -164,7 +164,7 @@ function getFromLocalStorage(){
 
         if(favorites.length === 0){
             resetButton.classList.add('hidden')
-
+            pEmptyFav.classList.remove('hidden')
             favSection.appendChild(pEmptyFav)
         }
        
