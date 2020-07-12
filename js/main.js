@@ -74,8 +74,9 @@ function renderShows(){
     const pEmptyResultsContent = document.createTextNode('There were no shows found ( ˘︹˘ ) ');
     pEmptyResults.appendChild(pEmptyResultsContent);
     resultsUl.appendChild(pEmptyResults);
-
-    if (shows.length !== 0){
+    if (searchBar.value === ''){
+        pEmptyResults.classList.add('hidden')
+    } else if (shows.length !== 0){
         pEmptyResults.classList.add('hidden')
     } else {
         pEmptyResults.classList.remove('hidden')
@@ -246,6 +247,7 @@ const eraseSearchButton = document.querySelector('.js-erase')
 
 function eraseSearchContent(){
     searchBar.value = ''
+    renderShows()
 }
 
 eraseSearchButton.addEventListener('click', eraseSearchContent)
