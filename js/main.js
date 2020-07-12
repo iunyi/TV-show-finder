@@ -41,7 +41,6 @@ function getData(){
 
 // 2. Pintar datos en la página
 function renderShows(){
-// TRYING
     let codeHTML = ''
     for(let i = 0; i < shows.length; i++){
         codeHTML += `<li class="js-results-li" id="${shows[i].show.id}">`
@@ -49,7 +48,6 @@ function renderShows(){
         codeHTML += `<p>${shows[i].show.name}<p>`
         codeHTML += `</li>`
     }
-
     resultsUl.innerHTML = codeHTML;
 
     for(let j = 0; j < favorites.length; j++){
@@ -70,6 +68,18 @@ function renderShows(){
         }
     }
     addShowsListeners()
+
+    // crear mensaje sin resultados
+    const pEmptyResults = document.createElement('p');
+    const pEmptyResultsContent = document.createTextNode('There were no shows found ( ˘︹˘ ) ');
+    pEmptyResults.appendChild(pEmptyResultsContent);
+    resultsUl.appendChild(pEmptyResults);
+
+    if (shows.length !== 0){
+        pEmptyResults.classList.add('hidden')
+    } else {
+        pEmptyResults.classList.remove('hidden')
+    }
 }
 
 // 3. Añadir listeners
@@ -86,11 +96,7 @@ function handleClickShow(){
     addFav(event)
     highlightFav(event)
     renderFav()
-    if (favorites.length !== 0){
-        pEmptyFav.classList.add('hidden')
-    } else {
-        pEmptyFav.classList.remove('hidden')
-    }
+  
     setInLocalStorage()
     getFromLocalStorage()
 }
@@ -127,6 +133,11 @@ function renderFav(){
         codeHTML += `</li>`
     }
     favUl.innerHTML = codeHTML;
+    if (favorites.length !== 0){
+        pEmptyFav.classList.add('hidden')
+    } else {
+        pEmptyFav.classList.remove('hidden')
+    }
 }
 
 // 5. Local storage
@@ -164,11 +175,7 @@ function getFromLocalStorage(){
 
         renderReset()
 
-        if(favorites.length === 0){
-            resetButton.classList.add('hidden')
-            pEmptyFav.classList.remove('hidden')
-            favSection.appendChild(pEmptyFav)
-        }
+        
        
         // 6. Eliminar una serie de la lista de favoritos
         const child = document.querySelectorAll('.fa-times');
@@ -210,6 +217,10 @@ function renderReset(){
         favSection.appendChild(resetButton);
         resetButton.classList.remove('hidden')
         pEmptyFav.classList.add('hidden')
+    } else if(favorites.length === 0){
+        resetButton.classList.add('hidden')
+        pEmptyFav.classList.remove('hidden')
+        favSection.appendChild(pEmptyFav)
     }
     addResetListener();
 }
