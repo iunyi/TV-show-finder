@@ -41,6 +41,7 @@ function getData(){
 
 // 2. Pintar datos en la página
 function renderShows(){
+    
     let codeHTML = ''
     for(let i = 0; i < shows.length; i++){
         codeHTML += `<li class="js-results-li" id="${shows[i].show.id}">`
@@ -50,17 +51,18 @@ function renderShows(){
     }
     resultsUl.innerHTML = codeHTML;
 
+    // Comprobar si hay algún resultado marcado como favorito previamente
     for(let j = 0; j < favorites.length; j++){
-        const rememberedFav1 = shows.find(show => show.show.id === favorites[j].show.id)
+        const rememberedFav = shows.find(show => show.show.id === favorites[j].show.id)
         if (shows.find(show => show.show.id === favorites[j].show.id) !== -1){
-             const rememberedFav1Position = shows.findIndex(show => show.show.id === favorites[j].show.id)
+             const rememberedFavPosition = shows.findIndex(show => show.show.id === favorites[j].show.id)
             const resultsLi = document.querySelectorAll('.js-results-li');
 
             setInLocalStorage()
           
             for (let i = 0; i < resultsLi.length; i++){
-                if (rememberedFav1Position !== -1){
-                    resultsLi[rememberedFav1Position].classList.add('highlight');
+                if (rememberedFavPosition !== -1){
+                    resultsLi[rememberedFavPosition].classList.add('highlight');
                     setInLocalStorage()
                     getFromLocalStorage()
                 }   
@@ -74,6 +76,7 @@ function renderShows(){
     const pEmptyResultsContent = document.createTextNode('There were no shows found ( ˘︹˘ ) ');
     pEmptyResults.appendChild(pEmptyResultsContent);
     resultsUl.appendChild(pEmptyResults);
+
     if (searchBar.value === ''){
         pEmptyResults.classList.add('hidden')
     } else if (shows.length !== 0){
@@ -247,6 +250,7 @@ const eraseSearchButton = document.querySelector('.js-erase')
 
 function eraseSearchContent(){
     searchBar.value = ''
+    shows = []
     renderShows()
 }
 
