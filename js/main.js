@@ -259,6 +259,21 @@ function eraseSearchContent(){
 }
 eraseSearchButton.addEventListener('click', eraseSearchContent)
 
+// 9. Sección favoritos desplegable
+const heart = document.querySelectorAll('.fa-heart');
+const favSectionMinimized = document.querySelector('.fav-minimized');
+
+function maxMinFav(){
+    favSection.classList.toggle('hidden')
+    favSectionMinimized.classList.toggle('hidden')
+}
+
+for(let item of heart){
+    item.addEventListener('click', maxMinFav)
+}
+
+const resultsSection = document.querySelector('.results');
+
 // 0. Arrancar página
 getFromLocalStorage()
 
