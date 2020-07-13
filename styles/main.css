@@ -26,7 +26,7 @@
 }
 
 .header {
-    padding: 20px 0 20px 20px;
+    padding: 20px;
     background-color: var(--color-dark);
     width: 100vw;
     line-height: 30p;
